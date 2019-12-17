@@ -7,28 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60fa3cc5-3121-48a1-b2cc-e74ff5d17957" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/integratedSearch.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchActor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchAudience.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchCooperationMovie.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchDirector.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchGenre.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchPartnership.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchTime.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/searchTitle.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/analysis_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/analysis_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/func_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/func_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/func_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/func_5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/func_6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/func_7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dashboard2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webApp.iml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +58,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -229,7 +209,7 @@
       <option name="presentableId" value="Default" />
       <updated>1576045559002</updated>
       <workItem from="1576045560795" duration="11050000" />
-      <workItem from="1576480872426" duration="23631000" />
+      <workItem from="1576480872426" duration="25508000" />
     </task>
     <servers />
   </component>
