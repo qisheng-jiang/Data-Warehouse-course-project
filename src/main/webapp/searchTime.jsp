@@ -80,7 +80,7 @@
                 <div class="sixteen wide column">
                     <div class="ui segments">
                         <div class="ui segment">
-                            <form class="ui form" method="post" action="timeSearch">
+                            <form class="ui form" action="timeSearch" method="post">
                                 <h4 class="ui dividing header">Setting time</h4>
                                 <div class="four fields">
                                     <div class="field">
@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ui black submit button">Search</div>
+                                <input type="submit" value="Submit" class="ui black button"/>
                             </form>
                         </div>
                     </div>
@@ -228,6 +228,20 @@
 <script>
 
 </script>
+
+<script type="text/javascript">
+    // $.fn.api.settings.api = {
+    //     'search':'http://localhost:8080/webApp_war/timeSearch'
+    // }
+    // $('.ui.form .submit.button').api({
+    //     url:'http://localhost:8080/webApp_war/timeSearch',
+    //     method:'POST',
+    //     serializeFrom:true
+    //     }
+    // )
+</script>
+
+
 <!--jquery-->
 <script src="js/jquery-2.1.4.min.js"></script>
 <!--jquery-->
