@@ -19,6 +19,16 @@ public class HiveConn {
     private static Statement stmt = null;
     private static ResultSet rs = null;
 
+    private HiveConn(){}
+
+    public static Connection getConn()throws Exception{
+        if (conn == null){
+            Class.forName(driverName);
+            conn = DriverManager.getConnection(url,user,password);
+        }
+        return conn;
+    }
+
     // 加载驱动、创建连接
     public static void init() throws Exception {
         Class.forName(driverName);
