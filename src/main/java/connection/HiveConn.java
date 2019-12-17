@@ -9,7 +9,7 @@ public class HiveConn {
     // 驱动，固定的
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";
     // 默认就是10000端口，ip地址使用hive服务器的
-    private static String url = "jdbc:hive2://119.3.21.54:10000/default";
+    private static String url = "jdbc:hive2://119.3.21.54:10000/datawarehouse";
     // hive连接的用户名和密码，默认就算是下面这两个
     private static String user = "hive";
     private static String password = "hive";
@@ -18,6 +18,16 @@ public class HiveConn {
     private static Connection conn = null;
     private static Statement stmt = null;
     private static ResultSet rs = null;
+
+    private HiveConn(){}
+
+    public static Connection getConn()throws Exception{
+        if (conn == null){
+            Class.forName(driverName);
+            conn = DriverManager.getConnection(url,user,password);
+        }
+        return conn;
+    }
 
     // 加载驱动、创建连接
     public static void init() throws Exception {

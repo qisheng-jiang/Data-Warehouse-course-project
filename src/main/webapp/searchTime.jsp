@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +36,7 @@
                 <i class="dropdown icon"></i> Search
             </a>
             <div class="content">
-                <a class="item" href="searchTime.html">
+                <a class="item" href="searchTime.jsp">
                     Time
                 </a>
                 <a class="item" href="searchTitle.html">
@@ -79,7 +80,7 @@
                 <div class="sixteen wide column">
                     <div class="ui segments">
                         <div class="ui segment">
-                            <form class="ui form">
+                            <form class="ui form" method="post" action="timeSearch">
                                 <h4 class="ui dividing header">Setting time</h4>
                                 <div class="four fields">
                                     <div class="field">
@@ -124,7 +125,7 @@
                                             <div class="default text">Weekday</div>
                                             <i class="dropdown icon"></i>
                                             <div class="menu">
-                                                <div class="item" data-value="0">Sunday</div>
+                                                <div class="item" data-value="7">Sunday</div>
                                                 <div class="item" data-value="1">Monday</div>
                                                 <div class="item" data-value="2">Tuesday</div>
                                                 <div class="item" data-value="3">Wednesday</div>
