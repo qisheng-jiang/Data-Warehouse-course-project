@@ -14,19 +14,25 @@ public class HiveService {
 
     public static Map searchByTime(Map<String, Integer> conditions){
         Map result = new HashMap<String, Object>();
+        StringBuilder sql = null;
         try{
             conn = HiveConn.getConn();
-            StringBuilder sql = new StringBuilder("SELECT * FROM fact_movie f JOIN (SELECT timeKey FROM div_time WHERE");
-            Set<Map.Entry<String, Integer>> set = conditions.entrySet();
-            for (Map.Entry i:set
-                 ) {
-                sql.append(i.getKey());
-                sql.append(" = ");
-                sql.append(i.getValue());
-                sql.append(" AND ");
+            if (conditions == null){
+                sql = new StringBuilder("SELECT * FROM fact_movie f JOIN  div_timed d ON f.timekey = d.timekey");
+            }else {
+                sql = new StringBuilder("SELECT * FROM fact_movie f JOIN (SELECT * FROM div_time WHERE");
+                Set<Map.Entry<String, Integer>> set = conditions.entrySet();
+                for (Map.Entry i:set
+                ) {
+                    sql.append(i.getKey());
+                    sql.append(" = ");
+                    sql.append(i.getValue());
+                    sql.append(" AND ");
+                }
+                sql.delete(sql.length()-5, sql.length()-1);
+                sql.append(") d ON f.timekey = d.timekey");
             }
-            sql.delete(sql.length()-5, sql.length()-1);
-            sql.append(") d ON f.timekey = d.timekey");
+            String count = sql.toString().replaceFirst("\\*", "count(*)");
             stmt = conn.createStatement();
             long startTime =  System.currentTimeMillis();
             rs = stmt.executeQuery(sql.toString());
@@ -43,6 +49,12 @@ public class HiveService {
                 movie.put("time", rs.getInt("year")+"."+rs.getInt("month")+"."+rs.getInt("timedate"));
                 movies.add(movie);
             }
+            result.put("movies", movies);
+            rs.close();
+            stmt.close();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(count);
+            result.put("num", rs.getInt(0));
             rs.close();
             stmt.close();
         }catch (Exception e){

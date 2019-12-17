@@ -1,3 +1,5 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,7 +155,7 @@
                             <div class="ui statistics">
                                 <div class="statistic">
                                     <div class="value">
-                                        22
+                                        <%=((Map<String, Object>)request.getAttribute("hive")).get("time")%>
                                     </div>
                                     <div class="label">
                                         Hive
@@ -192,13 +194,18 @@
                         <div class="ui segment">
                             <h3>Number of Films :</h3>
 <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
-                            <h2>233</h2>
+                            <h2>
+                                <%=((Map<String, Object>)request.getAttribute("hive")).get("time")%>
+                            </h2>
 <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <h4 class="ui horizontal header divider">
                                 <i class="icon ion-ios-grid-view"></i>
                                 Detail
                             </h4>
                             <table class="ui center aligned structured celled table">
+                                <%
+                                    List<Map> movies = (List<Map>) request.getAttribute("movies");
+                                %>
                                 <thead>
                                 <tr>
                                     <th>Title</th>
