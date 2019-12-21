@@ -1,3 +1,11 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    Map hiveResult = (Map<String, Object>)request.getAttribute("hive");
+    Map mysqlResult = (Map<String, Object>)request.getAttribute("mysql");
+    Map neo4jResult = (Map<String, Object>)request.getAttribute("neo4j");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,28 +46,28 @@
                 <a class="item" href="searchTime.jsp">
                     Time
                 </a>
-                <a class="item" href="searchTitle.html">
+                <a class="item" href="searchTitle.jsp">
                     Title
                 </a>
-                <a class="item" href="searchDirector.html">
+                <a class="item" href="searchDirector.jsp">
                     Director
                 </a>
-                <a class="item" href="searchActor.html">
+                <a class="item" href="searchActor.jsp">
                     Actor
                 </a>
-                <a class="item" href="searchGenre.html">
+                <a class="item" href="searchGenre.jsp">
                     Genres
                 </a>
-                <a class="item" href="searchPartnership.html">
+                <a class="item" href="searchPartnership.jsp">
                     Partnership
                 </a>
-                <a class="item" href="searchCooperationMovie.html">
+                <a class="item" href="searchCooperationMovie.jsp">
                     Cooperation Movie
                 </a>
-                <a class="item" href="searchAudience.html">
+                <a class="item" href="searchAudience.jsp">
                     Audience
                 </a>
-                <a class="item" href="integratedSearch.html">
+                <a class="item" href="integratedSearch.jsp">
                     Integrated Search
                 </a>
             </div>
@@ -79,7 +87,7 @@
                 <div class="sixteen wide column">
                     <div class="ui segments">
                         <div class="ui segment">
-                            <form class="ui form">
+                            <form class="ui form" action="intergraedSearch" method="post">
                                 <h4 class="ui dividing header">Setting condition</h4>
                                 <div class="two fields">
                                     <div class="field">
@@ -93,7 +101,7 @@
                                             <div class="default text">Month</div>
                                             <i class="dropdown icon"></i>
                                             <div class="menu">
-                                                <div class="item" data-value="0">Any</div>
+<%--                                                <div class="item" data-value="0">Any</div>--%>
                                                 <div class="item" data-value="1">1</div>
                                                 <div class="item" data-value="2">2</div>
                                                 <div class="item" data-value="3">3</div>
@@ -118,41 +126,47 @@
                                     <div class="field">
                                         <label>Genres</label>
                                         <div class="ui selection dropdown">
+                                            <input type="hidden" name="genre">
                                             <div class="default text">Genre</div>
                                             <i class="dropdown icon"></i>
                                             <div class="menu">
                                                 <div class="item" data-value="0">Action & Adventure</div>
-                                                <div class="item" data-value="1">Anime & Manga</div>
-                                                <div class="item" data-value="2">Arts & Entertainment</div>
-                                                <div class="item" data-value="3">Beauty & Fashion</div>
-                                                <div class="item" data-value="4">Comedy</div>
-                                                <div class="item" data-value="5">Documentary</div>
-                                                <div class="item" data-value="6">Drama</div>
-                                                <div class="item" data-value="7">Educational</div>
-                                                <div class="item" data-value="8">Exercise & Fitness</div>
-                                                <div class="item" data-value="9">Exercise & Fitness</div>
-                                                <div class="item" data-value="10">Fantasy</div>
-                                                <div class="item" data-value="11">Food & Drink</div>
-                                                <div class="item" data-value="12">Foreign Films</div>
-                                                <div class="item" data-value="12">Gaming</div>
-                                                <div class="item" data-value="12">Health</div>
-                                                <div class="item" data-value="12">Home & Garden</div>
-                                                <div class="item" data-value="12">Horror</div>
-                                                <div class="item" data-value="12">Kids & Family</div>
-                                                <div class="item" data-value="12">LGBT</div>
-                                                <div class="item" data-value="12">Military & War</div>
-                                                <div class="item" data-value="12">Music Videos & Concerts</div>
-                                                <div class="item" data-value="12">Mystery & Thrillers</div>
-                                                <div class="item" data-value="12">Performing Arts</div>
-                                                <div class="item" data-value="12">Reality TV</div>
-                                                <div class="item" data-value="12">Romance</div>
-                                                <div class="item" data-value="12">Science Fiction</div>
-                                                <div class="item" data-value="12">Soap Operas</div>
-                                                <div class="item" data-value="12">Special Interests</div>
-                                                <div class="item" data-value="12">Sports</div>
-                                                <div class="item" data-value="12">TV Game Shows</div>
-                                                <div class="item" data-value="12">TV News Programming</div>
-                                                <div class="item" data-value="12">TV Talk Shows</div>
+                                                <div class="item" data-value="1">Classics</div>
+                                                <div class="item" data-value="2">Foreign Language & International & Foreign Films</div>
+                                                <div class="item" data-value="3">Indian Cinema & Bollywood</div>
+                                                <div class="item" data-value="4">Indie & Art House</div>
+                                                <div class="item" data-value="5">Kids & Family</div>
+                                                <div class="item" data-value="6">LGBTQ</div>
+                                                <div class="item" data-value="7">Music Videos & Concerts</div>
+                                                <div class="item" data-value="8">Western</div>
+                                                <div class="item" data-value="9">Animation & Anime & Manga</div>
+                                                <div class="item" data-value="10">Arts & Entertainment</div>
+                                                <div class="item" data-value="11">Beauty & Fashion</div>
+                                                <div class="item" data-value="12">Comedy</div>
+                                                <div class="item" data-value="13">Documentary</div>
+                                                <div class="item" data-value="14">Drama</div>
+                                                <div class="item" data-value="15">Educational</div>
+                                                <div class="item" data-value="16">Exercise & Fitness</div>
+                                                <div class="item" data-value="17">Faith & Spirituality</div>
+                                                <div class="item" data-value="18">Fantasy</div>
+                                                <div class="item" data-value="19">Food & Drink</div>
+                                                <div class="item" data-value="20">Gaming</div>
+                                                <div class="item" data-value="21">Health</div>
+                                                <div class="item" data-value="22">Home & Garden</div>
+                                                <div class="item" data-value="23">Horror</div>
+                                                <div class="item" data-value="24">Military & War</div>
+                                                <div class="item" data-value="25">Musicals</div>
+                                                <div class="item" data-value="26">Mystery & Thrillers</div>
+                                                <div class="item" data-value="27">Performing Arts</div>
+                                                <div class="item" data-value="28">Reality TV</div>
+                                                <div class="item" data-value="29">Romance</div>
+                                                <div class="item" data-value="30">Science Fiction</div>
+                                                <div class="item" data-value="31">Soap Operas</div>
+                                                <div class="item" data-value="32">Special Interests</div>
+                                                <div class="item" data-value="33">Sports</div>
+                                                <div class="item" data-value="34">TV Game Shows</div>
+                                                <div class="item" data-value="35">TV News Programming</div>
+                                                <div class="item" data-value="36">TV Talk Shows</div>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +191,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ui black submit button">Search</div>
+                                <input type="submit" value="Submit" class="ui black button"/>
                             </form>
                         </div>
                     </div>
@@ -193,25 +207,37 @@
                             <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <div class="ui statistics">
                                 <div class="statistic">
+                                    <%if (hiveResult != null && hiveResult.containsKey("time")){%>
                                     <div class="value">
-                                        22
+                                        <%=hiveResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"> </div>
+                                    <%}%>
                                     <div class="label">
                                         Hive
                                     </div>
                                 </div>
                                 <div class="statistic">
+                                    <%if (mysqlResult != null && mysqlResult.containsKey("time")){%>
                                     <div class="value">
-                                        31
+                                        <%=mysqlResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"> </div>
+                                    <%}%>
                                     <div class="label">
                                         MySQL
                                     </div>
                                 </div>
                                 <div class="statistic">
+                                    <%if (neo4jResult != null && neo4jResult.containsKey("time")){%>
                                     <div class="value">
-                                        22
+                                        <%=neo4jResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"> </div>
+                                    <%}%>
                                     <div class="label">
                                         Neo4j
                                     </div>
@@ -233,7 +259,11 @@
                         <div class="ui segment">
                             <h3>Number of Films :</h3>
                             <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
-                            <h2>233</h2>
+                            <%if (hiveResult != null && hiveResult.containsKey("num")){%>
+                            <h2>
+                                <%=hiveResult.get("num")%>
+                            </h2>
+                            <%}%>
                             <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <h4 class="ui horizontal header divider">
                                 <i class="icon ion-ios-grid-view"></i>
@@ -244,18 +274,32 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>IMDB Rate</th>
+                                    <th>Director</th>
+                                    <th>Actor</th>
+                                    <th>Time</th>
                                 </tr>
                                 </thead>
                                 <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                                 <tbody>
+                                <%
+                                    if (hiveResult != null && hiveResult.containsKey("movies")){
+                                        List<Map> movies = (List<Map>) hiveResult.get("movies");
+                                        if (movies != null){
+                                            for (Map i:movies
+                                            ) {%>
                                 <tr>
-                                    <td>2002-10</td>
-                                    <td>579</td>
+                                    <td><%=i.get("title")%></td>
+                                    <td><%=i.get("imdb")%></td>
+                                    <td><%=i.get("directorname")%></td>
+                                    <td><%=i.get("actorname")%></td>
+                                    <td><%=i.get("time")%></td>
                                 </tr>
-                                <tr>
-                                    <td>2002-11</td>
-                                    <td>555</td>
-                                </tr>
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>
+
                                 </tbody>
                                 <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             </table>

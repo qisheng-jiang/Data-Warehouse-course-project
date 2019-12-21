@@ -1,8 +1,16 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+Map hiveResult = (Map<String, Object>)request.getAttribute("hive");
+Map mysqlResult = (Map<String, Object>)request.getAttribute("mysql");
+Map neo4jResult = (Map<String, Object>)request.getAttribute("neo4j");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Search Cooperation Movie</title>
+    <title>Search Partnership</title>
     <link rel="icon" href="img/favicon.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,42 +32,41 @@
     <div class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  blue" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;">
         <div class="ui accordion inverted">
 
-            <a class="title item" href="home.html">
+            <a class="title item"href="home.html">
                 <i class="icon ion-paper-airplane titleIcon icon"></i>
                 Home
             </a>
 
             <a class="title item">
                 <i class="icon ion-ios-search titleIcon icon"></i>
-
                 <i class="dropdown icon"></i> Search
             </a>
             <div class="content">
                 <a class="item" href="searchTime.jsp">
                     Time
                 </a>
-                <a class="item" href="searchTitle.html">
+                <a class="item" href="searchTitle.jsp">
                     Title
                 </a>
-                <a class="item" href="searchDirector.html">
+                <a class="item" href="searchDirector.jsp">
                     Director
                 </a>
-                <a class="item" href="searchActor.html">
+                <a class="item" href="searchActor.jsp">
                     Actor
                 </a>
-                <a class="item" href="searchGenre.html">
+                <a class="item" href="searchGenre.jsp">
                     Genres
                 </a>
-                <a class="item" href="searchPartnership.html">
+                <a class="item" href="searchPartnership.jsp">
                     Partnership
                 </a>
-                <a class="item" href="searchCooperationMovie.html">
+                <a class="item" href="searchCooperationMovie.jsp">
                     Cooperation Movie
                 </a>
-                <a class="item" href="searchAudience.html">
+                <a class="item" href="searchAudience.jsp">
                     Audience
                 </a>
-                <a class="item" href="integratedSearch.html">
+                <a class="item" href="integratedSearch.jsp">
                     Integrated Search
                 </a>
             </div>
@@ -74,22 +81,16 @@
     <div class="mainWrap navslide">
         <div class="ui equal width left aligned padded grid stackable">
             <div class="divider"></div>
-            <h3 class="ui header">Cooperation Movie Search</h3>
+            <h3 class="ui header">Partnership Search</h3>
             <div class="row">
                 <div class="sixteen wide column">
                     <div class="ui segments">
                         <div class="ui segment">
-                            <form class="ui form">
-                                <h4 class="ui dividing header">The two</h4>
+                            <form class="ui form" action="partnershipSearch" method="post">
+                                <h4 class="ui dividing header">Actor/Director Name</h4>
                                 <div class="two fields">
                                     <div class="field">
-                                        <label>Actor</label>
-                                        <input type="text" name="name" placeholder="Full Name">
-                                    </div>
-                                </div>
-                                <div class="two fields">
-                                    <div class="field">
-                                        <label>Cooperator</label>
+                                        <label>Actor/Director</label>
                                         <input type="text" name="name" placeholder="Full Name">
                                     </div>
                                     <div class="field">
@@ -105,7 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ui black submit button">Search</div>
+                                <input type="submit" value="Submit" class="ui black button"/>
                             </form>
                         </div>
                     </div>
@@ -121,25 +122,37 @@
                             <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <div class="ui statistics">
                                 <div class="statistic">
+                                    <%if (hiveResult != null && hiveResult.containsKey("time")){%>
                                     <div class="value">
-                                        22
+                                        <%=hiveResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"> </div>
+                                    <%}%>
                                     <div class="label">
                                         Hive
                                     </div>
                                 </div>
                                 <div class="statistic">
+                                    <%if (mysqlResult != null && mysqlResult.containsKey("time")){%>
                                     <div class="value">
-                                        31
+                                        <%=mysqlResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"> </div>
+                                    <%}%>
                                     <div class="label">
                                         MySQL
                                     </div>
                                 </div>
                                 <div class="statistic">
+                                    <%if (neo4jResult != null && neo4jResult.containsKey("time")){%>
                                     <div class="value">
-                                        22
+                                        <%=neo4jResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"> </div>
+                                    <%}%>
                                     <div class="label">
                                         Neo4j
                                     </div>
@@ -159,21 +172,42 @@
                             </h4>
                         </div>
                         <div class="ui segment">
+                            <h3>Number of Partners :</h3>
+<!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
+                            <%if (hiveResult != null && hiveResult.containsKey("num")){%>
+                            <h2>
+                                <%=hiveResult.get("num")%>
+                            </h2>
+                            <%}%>
+                            <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
+                            <h4 class="ui horizontal header divider">
+                                <i class="icon ion-ios-grid-view"></i>
+                                Detail
+                            </h4>
                             <table class="ui center aligned structured celled table">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Times of cooperation</th>
+                                    <th>Times</th>
                                 </tr>
                                 </thead>
                                 <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                                 <tbody>
+                                <%
+                                    if (hiveResult != null && hiveResult.containsKey("partner")){
+                                        List<Map> movies = (List<Map>) hiveResult.get("partner");
+                                        if (movies != null){
+                                            for (Map i:movies
+                                            ) {%>
                                 <tr>
-                                    <td>chend</td>
-                                    <td>actor</td>
-                                    <td>4</td>
+                                    <td><%=i.get("name")%></td>
+                                    <td><%=i.get("num")%></td>
                                 </tr>
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>
                                 </tbody>
                                 <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             </table>

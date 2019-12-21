@@ -2,15 +2,15 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    Map hiveResult = (Map<String, Object>)request.getAttribute("hive");
-    Map mysqlResult = (Map<String, Object>)request.getAttribute("mysql");
-    Map neo4jResult = (Map<String, Object>)request.getAttribute("neo4j");
+Map hiveResult = (Map<String, Object>)request.getAttribute("hive");
+Map mysqlResult = (Map<String, Object>)request.getAttribute("mysql");
+Map neo4jResult = (Map<String, Object>)request.getAttribute("neo4j");
 %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Search According to Time</title>
+    <title>Search According to Genre</title>
     <link rel="icon" href="img/favicon.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,14 +32,13 @@
     <div class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  blue" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;">
         <div class="ui accordion inverted">
 
-            <a class="title item" href="home.html">
+            <a class="title item"href="home.html">
                 <i class="icon ion-paper-airplane titleIcon icon"></i>
                 Home
             </a>
 
             <a class="title item">
                 <i class="icon ion-ios-search titleIcon icon"></i>
-
                 <i class="dropdown icon"></i> Search
             </a>
             <div class="content">
@@ -82,64 +81,57 @@
     <div class="mainWrap navslide">
         <div class="ui equal width left aligned padded grid stackable">
             <div class="divider"></div>
-            <h3 class="ui header">Time Search</h3>
+            <h3 class="ui header">Genre Search</h3>
             <div class="row">
                 <div class="sixteen wide column">
                     <div class="ui segments">
                         <div class="ui segment">
-                            <form class="ui form" action="timeSearch" method="post">
-                                <h4 class="ui dividing header">Setting time</h4>
-                                <div class="four fields">
-                                    <div class="field">
-                                        <label>Year</label>
-                                        <input type="text" name="year" placeholder="Year">
-                                    </div>
-                                    <div class="field">
-                                        <label>Month</label>
-                                        <div class="ui selection dropdown">
-                                            <input type="hidden" name="month">
-                                            <div class="default text">Month</div>
-                                            <i class="dropdown icon"></i>
-                                            <div class="menu">
-<%--                                                <div class="item" data-value="0">Any</div>--%>
-                                                <div class="item" data-value="1">1</div>
-                                                <div class="item" data-value="2">2</div>
-                                                <div class="item" data-value="3">3</div>
-                                                <div class="item" data-value="4">4</div>
-                                                <div class="item" data-value="5">5</div>
-                                                <div class="item" data-value="6">6</div>
-                                                <div class="item" data-value="7">7</div>
-                                                <div class="item" data-value="8">8</div>
-                                                <div class="item" data-value="9">9</div>
-                                                <div class="item" data-value="10">10</div>
-                                                <div class="item" data-value="11">11</div>
-                                                <div class="item" data-value="12">12</div>
-                                                <div class="item" data-value="13">The 1 Quarter</div>
-                                                <div class="item" data-value="14">The 2 Quarter</div>
-                                                <div class="item" data-value="15">The 3 Quarter</div>
-                                                <div class="item" data-value="16">The 4 Quarter</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field">
-                                        <label>Day</label>
-                                        <input type="text" name="timedate" placeholder="Day">
-                                    </div>
-                                    <div class="field">
-                                        <label>Weekday</label>
-                                        <div class="ui selection dropdown">
-                                            <input type="hidden" name="day">
-                                            <div class="default text">Weekday</div>
-                                            <i class="dropdown icon"></i>
-                                            <div class="menu">
-                                                <div class="item" data-value="7">Sunday</div>
-                                                <div class="item" data-value="1">Monday</div>
-                                                <div class="item" data-value="2">Tuesday</div>
-                                                <div class="item" data-value="3">Wednesday</div>
-                                                <div class="item" data-value="4">Thursday</div>
-                                                <div class="item" data-value="5">Friday</div>
-                                                <div class="item" data-value="6">Saturday</div>
-                                            </div>
+                            <h4 class="ui dividing header">Setting genre</h4>
+                            <form class="ui form" action="genreSearch" method="post">
+                                <div class="field">
+                                    <label>Genres</label>
+                                    <div class="ui selection dropdown">
+                                        <input type="hidden" name="genre">
+                                        <div class="default text">Genre</div>
+                                        <i class="dropdown icon"></i>
+                                        <div class="menu">
+                                            <div class="item" data-value="0">Action & Adventure</div>
+                                            <div class="item" data-value="1">Classics</div>
+                                            <div class="item" data-value="2">Foreign Language & International & Foreign Films</div>
+                                            <div class="item" data-value="3">Indian Cinema & Bollywood</div>
+                                            <div class="item" data-value="4">Indie & Art House</div>
+                                            <div class="item" data-value="5">Kids & Family</div>
+                                            <div class="item" data-value="6">LGBTQ</div>
+                                            <div class="item" data-value="7">Music Videos & Concerts</div>
+                                            <div class="item" data-value="8">Western</div>
+                                            <div class="item" data-value="9">Animation & Anime & Manga</div>
+                                            <div class="item" data-value="10">Arts & Entertainment</div>
+                                            <div class="item" data-value="11">Beauty & Fashion</div>
+                                            <div class="item" data-value="12">Comedy</div>
+                                            <div class="item" data-value="13">Documentary</div>
+                                            <div class="item" data-value="14">Drama</div>
+                                            <div class="item" data-value="15">Educational</div>
+                                            <div class="item" data-value="16">Exercise & Fitness</div>
+                                            <div class="item" data-value="17">Faith & Spirituality</div>
+                                            <div class="item" data-value="18">Fantasy</div>
+                                            <div class="item" data-value="19">Food & Drink</div>
+                                            <div class="item" data-value="20">Gaming</div>
+                                            <div class="item" data-value="21">Health</div>
+                                            <div class="item" data-value="22">Home & Garden</div>
+                                            <div class="item" data-value="23">Horror</div>
+                                            <div class="item" data-value="24">Military & War</div>
+                                            <div class="item" data-value="25">Musicals</div>
+                                            <div class="item" data-value="26">Mystery & Thrillers</div>
+                                            <div class="item" data-value="27">Performing Arts</div>
+                                            <div class="item" data-value="28">Reality TV</div>
+                                            <div class="item" data-value="29">Romance</div>
+                                            <div class="item" data-value="30">Science Fiction</div>
+                                            <div class="item" data-value="31">Soap Operas</div>
+                                            <div class="item" data-value="32">Special Interests</div>
+                                            <div class="item" data-value="33">Sports</div>
+                                            <div class="item" data-value="34">TV Game Shows</div>
+                                            <div class="item" data-value="35">TV News Programming</div>
+                                            <div class="item" data-value="36">TV Talk Shows</div>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +148,7 @@
                             <h5 class="ui header">Time cost</h5>
                         </div>
                         <div class="ui segment">
-<!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
+ <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <div class="ui statistics">
                                 <div class="statistic">
                                     <%if (hiveResult != null && hiveResult.containsKey("time")){%>
@@ -216,7 +208,7 @@
                                 <%=hiveResult.get("num")%>
                             </h2>
                             <%}%>
-<!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
+                            <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <h4 class="ui horizontal header divider">
                                 <i class="icon ion-ios-grid-view"></i>
                                 Detail
@@ -231,6 +223,7 @@
                                     <th>Time</th>
                                 </tr>
                                 </thead>
+ <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                                 <tbody>
                                 <%
                                     if (hiveResult != null && hiveResult.containsKey("movies")){
@@ -263,20 +256,6 @@
 <script>
 
 </script>
-
-<script type="text/javascript">
-    // $.fn.api.settings.api = {
-    //     'search':'http://localhost:8080/webApp_war/timeSearch'
-    // }
-    // $('.ui.form .submit.button').api({
-    //     url:'http://localhost:8080/webApp_war/timeSearch',
-    //     method:'POST',
-    //     serializeFrom:true
-    //     }
-    // )
-</script>
-
-
 <!--jquery-->
 <script src="js/jquery-2.1.4.min.js"></script>
 <!--jquery-->
@@ -303,3 +282,40 @@
 </body>
 
 </html>
+Action & Adventure
+Classics
+Foreign Language & International & Foreign Films
+Indian Cinema & Bollywood
+Indie & Art House
+Kids & Family
+LGBTQ
+Music Videos & Concerts
+Western
+Animation & Anime & Manga
+Arts & Entertainment
+Beauty & Fashion
+Comedy
+Documentary
+Drama
+Educational
+Exercise & Fitness
+Faith & Spirituality
+Fantasy
+Food & Drink
+Gaming
+Health
+Home & Garden
+Horror
+Military & War
+Musicals
+Mystery & Thrillers
+Performing Arts
+Reality TV
+Romance
+Science Fiction
+Soap Operas
+Special Interests
+Sports
+TV Game Shows
+TV News Programming
+TV Talk Shows

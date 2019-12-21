@@ -1,3 +1,11 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+Map hiveResult = (Map<String, Object>)request.getAttribute("hive");
+Map mysqlResult = (Map<String, Object>)request.getAttribute("mysql");
+Map neo4jResult = (Map<String, Object>)request.getAttribute("neo4j");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,28 +45,28 @@
                 <a class="item" href="searchTime.jsp">
                     Time
                 </a>
-                <a class="item" href="searchTitle.html">
+                <a class="item" href="searchTitle.jsp">
                     Title
                 </a>
-                <a class="item" href="searchDirector.html">
+                <a class="item" href="searchDirector.jsp">
                     Director
                 </a>
-                <a class="item" href="searchActor.html">
+                <a class="item" href="searchActor.jsp">
                     Actor
                 </a>
-                <a class="item" href="searchGenre.html">
+                <a class="item" href="searchGenre.jsp">
                     Genres
                 </a>
-                <a class="item" href="searchPartnership.html">
+                <a class="item" href="searchPartnership.jsp">
                     Partnership
                 </a>
-                <a class="item" href="searchCooperationMovie.html">
+                <a class="item" href="searchCooperationMovie.jsp">
                     Cooperation Movie
                 </a>
-                <a class="item" href="searchAudience.html">
+                <a class="item" href="searchAudience.jsp">
                     Audience
                 </a>
-                <a class="item" href="integratedSearch.html">
+                <a class="item" href="integratedSearch.jsp">
                     Integrated Search
                 </a>
             </div>
@@ -79,13 +87,13 @@
                     <div class="ui segments">
                         <div class="ui segment">
                             <h4 class="ui dividing header">Director Name</h4>
-                            <div class="ui form">
+                            <form class="ui form" action="directorSearch" method="post">
                                 <div class="field">
                                     <label>Director</label>
-                                    <input type="text" placeholder="Full Name" style="width: 50%">
+                                    <input type="text" name="director" placeholder="Full Name" style="width: 50%">
                                 </div>
-                                <div class="ui black submit button">Search</div>
-                            </div>
+                                <input type="submit" value="Submit" class="ui black button"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -100,25 +108,37 @@
 <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <div class="ui statistics">
                                 <div class="statistic">
+                                    <%if (hiveResult != null && hiveResult.containsKey("time")){%>
                                     <div class="value">
-                                        22
+                                        <%=hiveResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"></div>
+                                    <%}%>
                                     <div class="label">
                                         Hive
                                     </div>
                                 </div>
                                 <div class="statistic">
+                                    <%if (mysqlResult != null && mysqlResult.containsKey("time")){%>
                                     <div class="value">
-                                        31
+                                        <%=mysqlResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"></div>
+                                    <%}%>
                                     <div class="label">
                                         MySQL
                                     </div>
                                 </div>
                                 <div class="statistic">
+                                    <%if (neo4jResult != null && neo4jResult.containsKey("time")){%>
                                     <div class="value">
-                                        22
+                                        <%=neo4jResult.get("time")%>
                                     </div>
+                                    <%}else{%>
+                                    <div class="value"></div>
+                                    <%}%>
                                     <div class="label">
                                         Neo4j
                                     </div>
@@ -140,8 +160,12 @@
                         <div class="ui segment">
                             <h3>Number of Films :</h3>
 <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
-                            <h2>233</h2>
-<!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
+                            <%if (hiveResult != null && hiveResult.containsKey("num")){%>
+                            <h2>
+                                <%=hiveResult.get("num")%>
+                            </h2>
+                            <%}%>
+                            <!--                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             <h4 class="ui horizontal header divider">
                                 <i class="icon ion-ios-grid-view"></i>
                                 Detail
@@ -151,18 +175,31 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>IMDB Rate</th>
+                                    <th>Director</th>
+                                    <th>Actor</th>
+                                    <th>Time</th>
                                 </tr>
                                 </thead>
  <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                                 <tbody>
+                                <%
+                                    if (hiveResult != null && hiveResult.containsKey("movies")){
+                                        List<Map> movies = (List<Map>) hiveResult.get("movies");
+                                        if (movies != null){
+                                            for (Map i:movies
+                                            ) {%>
                                 <tr>
-                                    <td>2002-10</td>
-                                    <td>579</td>
+                                    <td><%=i.get("title")%></td>
+                                    <td><%=i.get("imdb")%></td>
+                                    <td><%=i.get("directorname")%></td>
+                                    <td><%=i.get("actorname")%></td>
+                                    <td><%=i.get("time")%></td>
                                 </tr>
-                                <tr>
-                                    <td>2002-11</td>
-                                    <td>555</td>
-                                </tr>
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>
                                 </tbody>
 <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             </table>

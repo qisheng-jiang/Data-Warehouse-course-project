@@ -16,8 +16,8 @@ public class HiveConn {
 
     // 公共使用的变量
     private static Connection conn = null;
-    private static Statement stmt = null;
-    private static ResultSet rs = null;
+//    private static Statement stmt = null;
+//    private static ResultSet rs = null;
 
     private HiveConn(){}
 
@@ -28,7 +28,7 @@ public class HiveConn {
         }
         return conn;
     }
-
+/*
     // 加载驱动、创建连接
     public static void init() throws Exception {
         Class.forName(driverName);
@@ -103,14 +103,9 @@ public class HiveConn {
         String sql = "drop table if exists pokes";
         stmt.execute(sql);
     }
-
+*/
     public static void main(String[] args) {
-        try {
-            init();
-            countData();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 
 
