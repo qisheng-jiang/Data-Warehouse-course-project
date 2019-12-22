@@ -73,8 +73,6 @@
     <!--maincontent-->
     <div class="mainWrap navslide profilepage">
         <div class="ui equal width left aligned padded grid stackable">
-
-
             <div class="row">
                 <div class="sixteen wide tablet eight wide computer column">
                     <div class="ui top attached tabular menu">
@@ -153,294 +151,6 @@
     var myChart3 = echarts.init(document.getElementById('main3'));
     var myChart4 = echarts.init(document.getElementById('main4'));
 
-    option1 = {
-        title: {
-            text: '每年四个季度电影上映数量\n',
-            subtext: ''
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['第一季度', '第二季度', '第三季度', '第四季度'],
-            left: 'right'
-        },
-        toolbox: {
-            show: false,
-            feature: {
-                dataView: {
-                    show: true,
-                    readOnly: false
-                },
-                magicType: {
-                    show: true,
-                    type: ['line', 'bar']
-                },
-                restore: {
-                    show: true
-                },
-                saveAsImage: {
-                    show: true
-                }
-            }
-        },
-        calculable: true,
-        xAxis: [{
-            type: 'category',
-            data: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012']
-        }],
-        yAxis: [{
-            type: 'value'
-        }],
-        series: [{
-            name: '第一季度',
-            type: 'bar',
-            data: [1658, 1514, 1775, 1538, 1775, 1623, 1521, 1557, 1572, 1732],
-            markPoint: {
-                data: [{
-                    type: 'max',
-                    name: '最大值'
-                },
-                    {
-                        type: 'min',
-                        name: '最小值'
-                    }
-                ]
-            },
-            markLine: {
-                data: [{
-                    type: 'average',
-                    name: '平均值'
-                }]
-            }
-        }, {
-            name: '第二季度',
-            type: 'bar',
-            data: [1392, 1367, 1508, 1550, 1429, 1542, 1431, 1357, 1651, 1770],
-            markPoint: {
-                data: [{
-                    type: 'max',
-                    name: '最大值'
-                },
-                    {
-                        type: 'min',
-                        name: '最小值'
-                    }
-                ]
-            },
-            markLine: {
-                data: [{
-                    type: 'average',
-                    name: '平均值'
-                }]
-            }
-        }, {
-            name: '第三季度',
-            type: 'bar',
-            data: [1488, 1622, 1788, 1391, 1617, 1514, 1470, 1448, 1578, 1990],
-            markPoint: {
-                data: [{
-                    type: 'max',
-                    name: '最大值'
-                },
-                    {
-                        type: 'min',
-                        name: '最小值'
-                    }
-                ]
-            },
-            markLine: {
-                data: [{
-                    type: 'average',
-                    name: '平均值'
-                }]
-            }
-        }, {
-            name: '第四季度',
-            type: 'bar',
-            data: [1456, 1596, 1584, 1350, 1548, 1411, 1532, 1405, 1681, 1556],
-            markPoint: {
-                data: [{
-                    type: 'max',
-                    name: '最大值'
-                },
-                    {
-                        type: 'min',
-                        name: '最小值'
-                    }
-                ]
-            },
-            markLine: {
-                data: [{
-                    type: 'average',
-                    name: '平均值'
-                }]
-            }
-        }]
-    };
-
-    option2 = {
-        title: {
-            text: '各类电观影数量趋势'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['Action', 'Horror', 'Kids'],
-            left: 'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
-        },
-        yAxis: {
-            type: 'value',
-            axisLabel: {
-                formatter: '{value}'
-            }
-        },
-        series: [{
-            name: 'Action',
-            type: 'line',
-            data: [16062, 6009, 3711, 2880, 2601, 4428, 4203, 1886, 4385, 3504],
-            markPoint: {
-                data: [{
-                    type: 'max',
-                    name: '最大值'
-                },
-                    {
-                        type: 'min',
-                        name: '最小值'
-                    }
-                ]
-            },
-            markLine: {
-                data: [{
-                    type: 'average',
-                    name: '平均值'
-                }]
-            }
-        },
-            {
-                name: 'Horror',
-                type: 'line',
-                data: [10749, 4265, 1620, 1380, 959, 2273, 3786, 1688, 2657, 1420],
-                markPoint: {
-                    data: [{
-                        type: 'max',
-                        name: '最大值'
-                    },
-                        {
-                            type: 'min',
-                            name: '最小值'
-                        }
-                    ]
-                },
-                markLine: {
-                    data: [{
-                        type: 'average',
-                        name: '平均值'
-                    }]
-                }
-            },
-            {
-                name: 'Kids',
-                type: 'line',
-                data: [8654, 3236, 1766, 2251, 770, 2238, 1110, 1985, 1208, 2559],
-                markPoint: {
-                    data: [{
-                        type: 'max',
-                        name: '最大值'
-                    },
-                        {
-                            type: 'min',
-                            name: '最小值'
-                        }
-                    ]
-                },
-                markLine: {
-                    data: [{
-                        type: 'average',
-                        name: '平均值'
-                    }]
-                }
-            }
-        ]
-    };
-
-    option3 = {
-        title: {
-            text: '各类语言电影占比',
-            subtext: '',
-            x: 'left'
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'right',
-            data: ['English', 'Spanish', 'Chinese', 'Arabic', 'Portuguese', 'Japanese', 'Russian', 'German', 'Italian', 'French']
-        },
-        series: [{
-            name: '电影数量',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '60%'],
-            data: [{
-                value: 59889,
-                name: 'English'
-            },
-                {
-                    value: 6168,
-                    name: 'Spanish'
-                },
-                {
-                    value: 263,
-                    name: 'Chinese'
-                },
-                {
-                    value: 198,
-                    name: 'Arabic'
-                },
-                {
-                    value: 471,
-                    name: 'Portuguese'
-                },
-                {
-                    value: 3566,
-                    name: 'Japanese'
-                },
-                {
-                    value: 467,
-                    name: 'Russian'
-                },
-                {
-                    value: 3792,
-                    name: 'German'
-                },
-                {
-                    value: 2212,
-                    name: 'Italian'
-                },
-                {
-                    value: 7401,
-                    name: 'French'
-                }
-            ],
-            itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }]
-    };
-
     function createRandomItemStyle() {
         return {
             normal: {
@@ -453,15 +163,167 @@
         };
     }
 
-    option4 = {
+    option1 = {
+        title : {
+            text: '各类别电影占比',
+            x: 'left'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x : 'center',
+            y : 'bottom',
+            data:['Action & Adventure','Classics','Foreign Language & International & Foreign Films','Indian Cinema & Bollywood','Indie & Art House','Kids & Family','LGBTQ','Music Videos & Concerts','']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'半径模式',
+                type:'pie',
+                radius : [20, 110],
+                center : ['50%', '50%'],
+                roseType : 'radius',
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                lableLine: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                data:[
+                    {value:10, name:'rose1'},
+                    {value:5, name:'rose2'},
+                    {value:15, name:'rose3'},
+                    {value:25, name:'rose4'},
+                    {value:20, name:'rose5'},
+                    {value:35, name:'rose6'},
+                    {value:30, name:'rose7'},
+                    {value:40, name:'rose8'}
+                ]
+            }
+        ]
+    };
+
+    option2 = {
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data: ['第一季度', '第二季度','第三季度','第四季度']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis:  {
+            type: 'value'
+        },
+        yAxis: {
+            type: 'category',
+            data: ['周一','周二','周三','周四','周五','周六','周日']
+        },
+        series: [
+            {
+                name: '直接访问',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: [320, 302, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '邮件营销',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: [150, 212, 201, 154, 190, 330, 410]
+            },
+            {
+                name: '搜索引擎',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: [820, 832, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+
+    option3 = {
         title: {
-            text: '导演执导电影数量对比'
+            text: '演员参演电影数量'
         },
         tooltip: {
             show: true
         },
         series: [{
-            name: '执导电影数量',
+            name: '参演电影数量',
             type: 'wordCloud',
             size: ['80%', '80%'],
             textRotation: [0, 45, 90, -45],
@@ -1280,7 +1142,7 @@
     };
 
     // 使用刚指定的配置项和数据显示图表。
-    myChart1.setOption(option1);
+    myChart1.setOption(option);
     myChart2.setOption(option2);
     myChart3.setOption(option3);
     myChart4.setOption(option4);
