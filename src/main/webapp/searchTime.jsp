@@ -226,8 +226,8 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>IMDB Rate</th>
-                                    <th>Director</th>
-                                    <th>Actor</th>
+<%--                                    <th>Director</th>--%>
+<%--                                    <th>Actor</th>--%>
                                     <th>Time</th>
                                 </tr>
                                 </thead>

@@ -24,7 +24,7 @@ public class DirectorSearch extends HttpServlet {
         request.setAttribute("neo4j", resultByMysql);
 
         request.setAttribute("hive", resultByHive);
-        request.getRequestDispatcher("searchTitle.jsp").forward(request, response);
+        request.getRequestDispatcher("searchDirector.jsp").forward(request, response);
 
     }
 
