@@ -39,7 +39,8 @@ public class HiveService {
 
     public static Map searchByTitle(String title){
         Map result = new HashMap();
-        String sql = "SELECT * FROM fact_product WHERE movieid IN (SELECT movieid FROM fact_movie WHERE title = '"+title+"')";
+        String sql = "with a as (select productid from movie_product where movieID in (select movieID from Fact_movie where title = ' "+title+" ')) " +
+                "SELECT * FROM fact_product JOIN a on fact_product.productid = a.productid ";
         try{
 //            lock.lock();
             conn = HiveConn.getConn();
