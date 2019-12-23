@@ -341,33 +341,34 @@ public class HiveService {
     }
 
     public static Map searchIntergrated(Map<String, String> conditions){
-        StringBuilder sql = new StringBuilder("SELECT * FROM fact_movie JOIN ( SELECT timekey FROM div_time WHERE ");
-        if (conditions.containsKey("year")){
-            sql.append(" year = "+conditions.get("year")+" AND ");
-        }
-        if (conditions.containsKey("month")){
-            sql.append(" month = "+conditions.get("month")+" AND");
-        }
-        if (conditions.containsKey("quarter")){
-            sql.append(" quarter = "+conditions.get("quarter")+" AND ");
-        }
-        sql.replace(sql.length()-5, sql.length()-1, ") t JOIN ( ");
-        if (conditions.containsKey("genre")){
-            sql.append("SELECT movieid FROM bridge_is_genre WHERE bridge_is_genre.genreskey = "+conditions.get("genre")+" ");
-        }
-        if (conditions.containsKey("role")){
-            if (conditions.containsKey("genre")){
-                sql.append(" UNION DISTINCT ");
-            }
-            if (conditions.get("role").equals("0")){
-                sql.append(" SELECT bridge_star.movieid as movieid FROM bridge_star WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')\n" +
-                        "    UNION DISTINCT \n" +
-                        "    SElECT bridge_support.movieid as movieid FROM bridge_support WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')");
-            }else {
-                sql.append(" SELECT movieid FROM bridge_direct JOIN (SELECT directorkey FROM div_director WHERE name = '" + conditions.get("name") + "' ) n ON n.directorkey = bridge_direct.directorkey ");
-            }
-        }
-        sql.append(") a ON a.movieid = fact_movie.movieid AND t.timekey = fact_movie.timekey ");
+//        StringBuilder sql = new StringBuilder("SELECT * FROM fact_movie JOIN ( SELECT timekey FROM div_time WHERE ");
+//        if (conditions.containsKey("year")){
+//            sql.append(" year = "+conditions.get("year")+" AND ");
+//        }
+//        if (conditions.containsKey("month")){
+//            sql.append(" month = "+conditions.get("month")+" AND");
+//        }
+//        if (conditions.containsKey("quarter")){
+//            sql.append(" quarter = "+conditions.get("quarter")+" AND ");
+//        }
+//        sql.replace(sql.length()-5, sql.length()-1, ") t JOIN ( ");
+//        if (conditions.containsKey("genre")){
+//            sql.append("SELECT movieid FROM bridge_is_genre WHERE bridge_is_genre.genreskey = "+conditions.get("genre")+" ");
+//        }
+//        if (conditions.containsKey("role")){
+//            if (conditions.containsKey("genre")){
+//                sql.append(" UNION DISTINCT ");
+//            }
+//            if (conditions.get("role").equals("0")){
+//                sql.append(" SELECT bridge_star.movieid as movieid FROM bridge_star WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')\n" +
+//                        "    UNION DISTINCT \n" +
+//                        "    SElECT bridge_support.movieid as movieid FROM bridge_support WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')");
+//            }else {
+//                sql.append(" SELECT movieid FROM bridge_direct JOIN (SELECT directorkey FROM div_director WHERE name = '" + conditions.get("name") + "' ) n ON n.directorkey = bridge_direct.directorkey ");
+//            }
+//        }
+//        sql.append(") a ON a.movieid = fact_movie.movieid AND t.timekey = fact_movie.timekey ");
+        String sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 754";
         System.out.println(sql);
         return getMovies(sql.toString());
     }
