@@ -274,8 +274,8 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>IMDB Rate</th>
-                                    <th>Director</th>
-                                    <th>Actor</th>
+<%--                                    <th>Director</th>--%>
+<%--                                    <th>Actor</th>--%>
                                     <th>Time</th>
                                 </tr>
                                 </thead>
@@ -290,8 +290,8 @@
                                 <tr>
                                     <td><%=i.get("title")%></td>
                                     <td><%=i.get("imdb")%></td>
-                                    <td><%=i.get("directorname")%></td>
-                                    <td><%=i.get("actorname")%></td>
+<%--                                    <td><%=i.get("directorname")%></td>--%>
+<%--                                    <td><%=i.get("actorname")%></td>--%>
                                     <td><%=i.get("time")%></td>
                                 </tr>
                                 <%

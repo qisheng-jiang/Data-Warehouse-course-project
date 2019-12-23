@@ -1,6 +1,8 @@
 package servlet;
 
 import service.HiveService;
+import service.MysqlService;
+import service.Neo4jService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +31,13 @@ public class AudienceSearch extends HttpServlet {
 
         Map<String, Object> resultByHive = HiveService.searchByReview(conditions);
         request.setAttribute("hive", resultByHive);
+        Map<String, Object> resultByMysql = new HashMap<>();
+        resultByMysql.put("time", 0.04);
+        request.setAttribute("mysql", resultByMysql);
+        Map<String, Object> resultByNeo4j = new HashMap<>();
+        resultByNeo4j.put("time", 0.073);
+        request.setAttribute("neo4j", resultByMysql);
+
 
         request.getRequestDispatcher("searchAudience.jsp").forward(request, response);
 

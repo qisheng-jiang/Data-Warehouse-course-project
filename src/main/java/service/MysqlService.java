@@ -1,15 +1,13 @@
 package service;
 
-import connection.HiveConn;
+import connection.MysqlConn;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
-public class HiveService {
+public class MysqlService {
     private static Connection conn = null;
     private static Statement stmt = null;
     private static ResultSet rs = null;
@@ -42,7 +40,7 @@ public class HiveService {
         String sql = "SELECT * FROM fact_product WHERE movieid IN (SELECT movieid FROM fact_movie WHERE title = '"+title+"')";
         try{
 //            lock.lock();
-            conn = HiveConn.getConn();
+            conn = MysqlConn.getConn();
             stmt = conn.createStatement();
             long startTime =  System.currentTimeMillis();
             rs = stmt.executeQuery(sql);
@@ -101,7 +99,7 @@ public class HiveService {
 //        String count = sql.replaceFirst("\\*", "count(*)");
         try{
 //            lock.lock();
-            conn = HiveConn.getConn();
+            conn = MysqlConn.getConn();
             stmt = conn.createStatement();
             long startTime =  System.currentTimeMillis();
             rs = stmt.executeQuery(sql);
@@ -135,7 +133,6 @@ public class HiveService {
     }
 
     public static Map searchByReview(Map<String, String> conditions){
-        /*
         Map result = new HashMap<String, Object>();
         StringBuilder sql = new StringBuilder(
                 " SELECT m.title, d.text, d.summary, d.emotion, d.score, d.profilename  FROM fact_movie m " +
@@ -184,7 +181,7 @@ public class HiveService {
                     " ON m.movieid = d.movieid ");
         System.out.println(sql);
         try{
-            conn = HiveConn.getConn();
+            conn = MysqlConn.getConn();
             stmt = conn.createStatement();
             long startTime =  System.currentTimeMillis();
             rs = stmt.executeQuery(sql.toString());
@@ -214,23 +211,7 @@ public class HiveService {
             e.printStackTrace();
             return null;
         }
-        return result;*/
-        String sql = null;
-        if (conditions.containsKey("score")){
-            switch (conditions.get("score")){
-                case "0":
-                    sql="SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 100";
-                    break;
-                case "1":
-                    sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey ORDER BY f.imdb limit 100";
-                    break;
-                default:
-                    sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey ORDER BY f.runtime limit 100 ";
-            }
-        }else if (conditions.containsKey("emotion")){
-            sql = ("SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 100");
-        }
-        return getMovies(sql);
+        return result;
     }
 
     public static Map searchPartner(String name, String role){
@@ -261,7 +242,7 @@ public class HiveService {
         }
         System.out.println(sql);
         try{
-            conn = HiveConn.getConn();
+            conn = MysqlConn.getConn();
             stmt = conn.createStatement();
             long startTime =  System.currentTimeMillis();
             rs = stmt.executeQuery(sql);

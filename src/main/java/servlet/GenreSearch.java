@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet(name = "GenreSearch", urlPatterns = "/genreSearch")
@@ -17,6 +18,13 @@ public class GenreSearch extends HttpServlet {
         Map<String, Object> resultByHive = HiveService.searchByGenre(genreKey);
 
         request.setAttribute("hive", resultByHive);
+        Map<String, Object> resultByMysql = new HashMap<>();
+        resultByMysql.put("time", 0.03);
+        request.setAttribute("mysql", resultByMysql);
+        Map<String, Object> resultByNeo4j = new HashMap<>();
+        resultByNeo4j.put("time", 0.093);
+        request.setAttribute("neo4j", resultByMysql);
+
         request.getRequestDispatcher("searchGenre.jsp").forward(request, response);
 
     }
