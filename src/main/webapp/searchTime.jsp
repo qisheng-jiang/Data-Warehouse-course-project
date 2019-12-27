@@ -71,7 +71,7 @@
                     Integrated Search
                 </a>
             </div>
-            <a class="title item">
+            <a class="title item" href="compare.html">
                 <i class="icon ion-ios-color-filter-outline titleIcon icon"></i>
                 Compare&Analysis
             </a>

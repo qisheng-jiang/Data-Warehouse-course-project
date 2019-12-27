@@ -136,53 +136,46 @@ public class HiveService {
     }
 
     public static Map searchByReview(Map<String, String> conditions){
-        /*
+
         Map result = new HashMap<String, Object>();
         StringBuilder sql = new StringBuilder(
-                " SELECT m.title, d.text, d.summary, d.emotion, d.score, d.profilename  FROM fact_movie m " +
-                " JOIN (SELECT r.text, r.summary, r.emotion, s.score, r.movieid, u.profilename FROM fact_review r " +
-                " JOIN (SELECT userkey, profilename FROM div_user "
-                );
+                "WITH r as (SELECT * FROM review_tmp_orc " );
         if (conditions.containsKey("profilename")){
-            sql.append(" WHERE profilename = '"+conditions.get("profilename")+"' ");
+            sql.append(" WHERE profilename = '"+conditions.get("profilename")+"' AND ");
         }
-        sql.append( " ) u "+
-                    " JOIN (SELECT score, scorekey FROM div_score ");
         if (conditions.containsKey("score")){
             switch (conditions.get("score")){
                 case "0":
-                    sql.append(" WHERE up5 = 1 ");
+                    sql.append(" score >= 5 ");
                     break;
                 case "1":
-                    sql.append(" WHERE up4 = 1 ");
+                    sql.append(" score >= 4 ");
                     break;
                 case "2":
-                    sql.append(" WHERE up3 = 1 ");
+                    sql.append(" score >= 3 ");
                     break;
                 case "3":
-                    sql.append(" WHERE up2 = 1 ");
+                    sql.append(" score >= 2 ");
                     break;
                 case "4":
-                    sql.append(" WHERE down4 = 1 ");
+                    sql.append(" score <= 4 ");
                     break;
                 case "5":
-                    sql.append(" WHERE down3 = 1 ");
+                    sql.append(" score <= 3 ");
                     break;
                 case "6":
-                    sql.append(" WHERE down2 = 1 ");
+                    sql.append(" score <= 2 ");
                     break;
                 case "7":
-                    sql.append(" WHERE down1 = 1 ");
+                    sql.append(" score <= 1 ");
                     break;
             }
         }
-        sql.append( " ) s " +
-                    " on r.userkey = u.userkey AND r.scorekey = s.scorekey ");
         if (conditions.containsKey("emotion")){
-            sql.append(" WHERE r.emotion = "+conditions.get("emotion"));
+            sql.append(" AND emotion = "+conditions.get("emotion") + " ) ");
         }
-        sql.append( " ) d " +
-                    " ON m.movieid = d.movieid ");
+        sql.append("SELECT fact_movie.title, r.text, r.summary, r.emotion, r.score, r.profilename " +
+                "FROM fact_movie JOIN movie_product JOIN r ON fact_movie.movieid = movie_product.movieid AND movie_product.productid = r.productid" );
         System.out.println(sql);
         try{
             conn = HiveConn.getConn();
@@ -207,7 +200,7 @@ public class HiveService {
                 movie.put("profilename", rs.getString("profilename"));
                 movies.add(movie);
             }
-            result.put("movies", movies);
+            result.put("movises", movies);
             result.put("num", movies.size());
             rs.close();
             stmt.close();
@@ -215,23 +208,7 @@ public class HiveService {
             e.printStackTrace();
             return null;
         }
-        return result;*/
-        String sql = null;
-        if (conditions.containsKey("score")){
-            switch (conditions.get("score")){
-                case "0":
-                    sql="SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 100";
-                    break;
-                case "1":
-                    sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey ORDER BY f.imdb limit 100";
-                    break;
-                default:
-                    sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey ORDER BY f.runtime limit 100 ";
-            }
-        }else if (conditions.containsKey("emotion")){
-            sql = ("SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 100");
-        }
-        return getMovies(sql);
+        return result;
     }
 
     public static Map searchPartner(String name, String role){
@@ -341,34 +318,34 @@ public class HiveService {
     }
 
     public static Map searchIntergrated(Map<String, String> conditions){
-//        StringBuilder sql = new StringBuilder("SELECT * FROM fact_movie JOIN ( SELECT timekey FROM div_time WHERE ");
-//        if (conditions.containsKey("year")){
-//            sql.append(" year = "+conditions.get("year")+" AND ");
-//        }
-//        if (conditions.containsKey("month")){
-//            sql.append(" month = "+conditions.get("month")+" AND");
-//        }
-//        if (conditions.containsKey("quarter")){
-//            sql.append(" quarter = "+conditions.get("quarter")+" AND ");
-//        }
-//        sql.replace(sql.length()-5, sql.length()-1, ") t JOIN ( ");
-//        if (conditions.containsKey("genre")){
-//            sql.append("SELECT movieid FROM bridge_is_genre WHERE bridge_is_genre.genreskey = "+conditions.get("genre")+" ");
-//        }
-//        if (conditions.containsKey("role")){
-//            if (conditions.containsKey("genre")){
-//                sql.append(" UNION DISTINCT ");
-//            }
-//            if (conditions.get("role").equals("0")){
-//                sql.append(" SELECT bridge_star.movieid as movieid FROM bridge_star WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')\n" +
-//                        "    UNION DISTINCT \n" +
-//                        "    SElECT bridge_support.movieid as movieid FROM bridge_support WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')");
-//            }else {
-//                sql.append(" SELECT movieid FROM bridge_direct JOIN (SELECT directorkey FROM div_director WHERE name = '" + conditions.get("name") + "' ) n ON n.directorkey = bridge_direct.directorkey ");
-//            }
-//        }
-//        sql.append(") a ON a.movieid = fact_movie.movieid AND t.timekey = fact_movie.timekey ");
-        String sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 754";
+        StringBuilder sql = new StringBuilder("SELECT * FROM fact_movie JOIN ( SELECT timekey FROM div_time WHERE ");
+        if (conditions.containsKey("year")){
+            sql.append(" year = "+conditions.get("year")+" AND ");
+        }
+        if (conditions.containsKey("month")){
+            sql.append(" month = "+conditions.get("month")+" AND");
+        }
+        if (conditions.containsKey("quarter")){
+            sql.append(" quarter = "+conditions.get("quarter")+" AND ");
+        }
+        sql.replace(sql.length()-3, sql.length(), ") t JOIN ( ");
+        if (conditions.containsKey("genre")){
+            sql.append("SELECT movieid FROM bridge_is_genre WHERE bridge_is_genre.genreskey = "+conditions.get("genre")+" ");
+        }
+        if (conditions.containsKey("role")){
+            if (conditions.containsKey("genre")){
+                sql.append(" UNION DISTINCT ");
+            }
+            if (conditions.get("role").equals("0")){
+                sql.append(" SELECT bridge_star.movieid as movieid FROM bridge_star WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')\n" +
+                        "    UNION DISTINCT \n" +
+                        "    SElECT bridge_support.movieid as movieid FROM bridge_support WHERE actorkey IN (SELECT actorkey FROM div_actor WHERE name = '"+conditions.get("name")+"')");
+            }else {
+                sql.append(" SELECT movieid FROM bridge_direct JOIN (SELECT directorkey FROM div_director WHERE name = '" + conditions.get("name") + "' ) n ON n.directorkey = bridge_direct.directorkey ");
+            }
+        }
+        sql.append(") a ON a.movieid = fact_movie.movieid AND t.timekey = fact_movie.timekey ");
+//        String sql = "SELECT * FROM fact_movie f JOIN  div_time d ON f.timekey = d.timekey limit 754";
         System.out.println(sql);
         return getMovies(sql.toString());
     }

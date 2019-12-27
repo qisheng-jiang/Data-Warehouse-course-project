@@ -48,7 +48,7 @@ public class TimeSearch extends HttpServlet {
         request.setAttribute("mysql", resultByMysql);
         Map<String, Object> resultByNeo4j = new HashMap<>();
         resultByNeo4j.put("time", 0.093);
-        request.setAttribute("neo4j", resultByMysql);
+        request.setAttribute("neo4j", resultByNeo4j);
 
         request.getRequestDispatcher("searchTime.jsp").forward(request, response);
 

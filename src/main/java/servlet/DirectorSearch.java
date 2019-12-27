@@ -21,7 +21,7 @@ public class DirectorSearch extends HttpServlet {
         request.setAttribute("mysql", resultByMysql);
         Map<String, Object> resultByNeo4j = new HashMap<>();
         resultByNeo4j.put("time", 0.033);
-        request.setAttribute("neo4j", resultByMysql);
+        request.setAttribute("neo4j", resultByNeo4j);
 
         request.setAttribute("hive", resultByHive);
         request.getRequestDispatcher("searchDirector.jsp").forward(request, response);

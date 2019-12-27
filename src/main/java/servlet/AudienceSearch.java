@@ -36,7 +36,7 @@ public class AudienceSearch extends HttpServlet {
         request.setAttribute("mysql", resultByMysql);
         Map<String, Object> resultByNeo4j = new HashMap<>();
         resultByNeo4j.put("time", 0.073);
-        request.setAttribute("neo4j", resultByMysql);
+        request.setAttribute("neo4j", resultByNeo4j);
 
 
         request.getRequestDispatcher("searchAudience.jsp").forward(request, response);

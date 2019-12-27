@@ -70,7 +70,7 @@
                     Integrated Search
                 </a>
             </div>
-            <a class="title item">
+            <a class="title item" href="compare.html">
                 <i class="icon ion-ios-color-filter-outline titleIcon icon"></i>
                 Compare&Analysis
             </a>
@@ -201,46 +201,15 @@
                                 Detail
                             </h4>
                             <table class="ui center aligned structured celled table">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>IMDB Rate</th>
-                                    <th>Director</th>
-                                    <th>Actor</th>
-                                    <th>Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <%
-                                    if (hiveResult != null && hiveResult.containsKey("movies")){
-                                        List<Map> movies = (List<Map>) hiveResult.get("movies");
-                                        if (movies != null){
-                                            for (Map i:movies
-                                            ) {%>
-                                <tr>
-                                    <td><%=i.get("title")%></td>
-                                    <td><%=i.get("imdb")%></td>
-<%--                                    <td><%=i.get("directorname")%></td>--%>
-<%--                                    <td><%=i.get("actorname")%></td>--%>
-                                    <td><%=i.get("time")%></td>
-                                </tr>
-                                <%
-                                            }
-                                        }
-                                    }
-                                %>
-                                </tbody>
 <%--                                <thead>--%>
 <%--                                <tr>--%>
 <%--                                    <th>Title</th>--%>
-<%--                                    <th>Score</th>--%>
-<%--                                    <th>Summary</th>--%>
-<%--                                    <th>Text</th>--%>
-<%--                                    <th>Attitude</th>--%>
-<%--                                    <th>Audience Name</th>--%>
+<%--                                    <th>IMDB Rate</th>--%>
+<%--                                    <th>Director</th>--%>
+<%--                                    <th>Actor</th>--%>
+<%--                                    <th>Time</th>--%>
 <%--                                </tr>--%>
 <%--                                </thead>--%>
-<%--<!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->--%>
 <%--                                <tbody>--%>
 <%--                                <%--%>
 <%--                                    if (hiveResult != null && hiveResult.containsKey("movies")){--%>
@@ -250,11 +219,10 @@
 <%--                                            ) {%>--%>
 <%--                                <tr>--%>
 <%--                                    <td><%=i.get("title")%></td>--%>
-<%--                                    <td><%=i.get("score")%></td>--%>
-<%--                                    <td><%=i.get("summary")%></td>--%>
-<%--                                    <td><%=i.get("text")%></td>--%>
-<%--                                    <td><%=i.get("attitude")%></td>--%>
-<%--                                    <td><%=i.get("profilename")%></td>--%>
+<%--                                    <td><%=i.get("imdb")%></td>--%>
+<%--&lt;%&ndash;                                    <td><%=i.get("directorname")%></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td><%=i.get("actorname")%></td>&ndash;%&gt;--%>
+<%--                                    <td><%=i.get("time")%></td>--%>
 <%--                                </tr>--%>
 <%--                                <%--%>
 <%--                                            }--%>
@@ -262,6 +230,38 @@
 <%--                                    }--%>
 <%--                                %>--%>
 <%--                                </tbody>--%>
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Score</th>
+                                    <th>Summary</th>
+                                    <th>Text</th>
+                                    <th>Attitude</th>
+                                    <th>Audience Name</th>
+                                </tr>
+                                </thead>
+<!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
+                                <tbody>
+                                <%
+                                    if (hiveResult != null && hiveResult.containsKey("movies")){
+                                        List<Map> movies = (List<Map>) hiveResult.get("movies");
+                                        if (movies != null){
+                                            for (Map i:movies
+                                            ) {%>
+                                <tr>
+                                    <td><%=i.get("title")%></td>
+                                    <td><%=i.get("score")%></td>
+                                    <td><%=i.get("summary")%></td>
+                                    <td><%=i.get("text")%></td>
+                                    <td><%=i.get("attitude")%></td>
+                                    <td><%=i.get("profilename")%></td>
+                                </tr>
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>
+                                </tbody>
 <!--                                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx改-->
                             </table>
                         </div>

@@ -154,14 +154,14 @@
 
     option1 = {
         title: {
-            text: '每年四个季度电影上映数量\n',
+            text: '三种数据库在不同查询条件下的查询时间\n',
             subtext: ''
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['第一季度', '第二季度', '第三季度', '第四季度'],
+            data: ['Hive', 'MySQL', 'Neo4j'],
             left: 'right'
         },
         toolbox: {
@@ -186,15 +186,15 @@
         calculable: true,
         xAxis: [{
             type: 'category',
-            data: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012']
+            data: ['1', '2', '3', '4', '5', '6', '7']
         }],
         yAxis: [{
             type: 'value'
         }],
         series: [{
-            name: '第一季度',
+            name: 'Hive',
             type: 'bar',
-            data: [1658, 1514, 1775, 1538, 1775, 1623, 1521, 1557, 1572, 1732],
+            data: [73.405, 84.448, 78.836, 26.454, 495.383, 271.255, 120.405],
             markPoint: {
                 data: [{
                     type: 'max',
@@ -213,9 +213,9 @@
                 }]
             }
         }, {
-            name: '第二季度',
+            name: 'MySQL',
             type: 'bar',
-            data: [1392, 1367, 1508, 1550, 1429, 1542, 1431, 1357, 1651, 1770],
+            data: [0.276, 1.118, 0.147, 0.497, 9.634, 4.866, 0.232],
             markPoint: {
                 data: [{
                     type: 'max',
@@ -234,30 +234,9 @@
                 }]
             }
         }, {
-            name: '第三季度',
+            name: 'Neo4j',
             type: 'bar',
-            data: [1488, 1622, 1788, 1391, 1617, 1514, 1470, 1448, 1578, 1990],
-            markPoint: {
-                data: [{
-                    type: 'max',
-                    name: '最大值'
-                },
-                    {
-                        type: 'min',
-                        name: '最小值'
-                    }
-                ]
-            },
-            markLine: {
-                data: [{
-                    type: 'average',
-                    name: '平均值'
-                }]
-            }
-        }, {
-            name: '第四季度',
-            type: 'bar',
-            data: [1456, 1596, 1584, 1350, 1548, 1411, 1532, 1405, 1681, 1556],
+            data: [1.753, 0.234, 0.038, 0.131, 10.446, 2.831, 2.831, 0.007],
             markPoint: {
                 data: [{
                     type: 'max',
@@ -280,19 +259,19 @@
 
     option2 = {
         title: {
-            text: '各类电观影数量趋势'
+            text: '三种数据库排名变化'
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['Action', 'Horror', 'Kids'],
+            data: ['Hive', 'MySQL', 'Neo4j'],
             left: 'right'
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
+            data: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
         },
         yAxis: {
             type: 'value',
@@ -301,9 +280,9 @@
             }
         },
         series: [{
-            name: 'Action',
+            name: 'Hive',
             type: 'line',
-            data: [16062, 6009, 3711, 2880, 2601, 4428, 4203, 1886, 4385, 3504],
+            data: [18.5, 17.64, 35.395, 52.775, 51.136, 55.06, 72.286, 86.051],
             markPoint: {
                 data: [{
                     type: 'max',
@@ -323,9 +302,9 @@
             }
         },
             {
-                name: 'Horror',
+                name: 'MySQL',
                 type: 'line',
-                data: [10749, 4265, 1620, 1380, 959, 2273, 3786, 1688, 2657, 1420],
+                data: [1273.47, 1296.914, 1277.51, 1299.16, 1366.287, 1299.708, 1154.267, 1275.667],
                 markPoint: {
                     data: [{
                         type: 'max',
@@ -345,9 +324,9 @@
                 }
             },
             {
-                name: 'Kids',
+                name: 'Neo4j',
                 type: 'line',
-                data: [8654, 3236, 1766, 2251, 770, 2238, 1110, 1985, 1208, 2559],
+                data: [6.156, 14.743, 25.168, 33.007, 36.265, 39.965, 46.799, 50.56],
                 markPoint: {
                     data: [{
                         type: 'max',
@@ -371,7 +350,7 @@
 
     option3 = {
         title: {
-            text: '各类语言电影占比',
+            text: '三类数据库市场占有率对比',
             subtext: '',
             x: 'left'
         },
@@ -382,7 +361,7 @@
         legend: {
             orient: 'vertical',
             left: 'right',
-            data: ['English', 'Spanish', 'Chinese', 'Arabic', 'Portuguese', 'Japanese', 'Russian', 'German', 'Italian', 'French']
+            data: ['MySQL', 'Hive', 'Neo4j']
         },
         series: [{
             name: '电影数量',
@@ -390,44 +369,16 @@
             radius: '55%',
             center: ['50%', '60%'],
             data: [{
-                value: 59889,
-                name: 'English'
+                value: 1154.27,
+                name: 'MySQL'
             },
                 {
-                    value: 6168,
-                    name: 'Spanish'
+                    value: 86.05,
+                    name: 'Hive'
                 },
                 {
-                    value: 263,
-                    name: 'Chinese'
-                },
-                {
-                    value: 198,
-                    name: 'Arabic'
-                },
-                {
-                    value: 471,
-                    name: 'Portuguese'
-                },
-                {
-                    value: 3566,
-                    name: 'Japanese'
-                },
-                {
-                    value: 467,
-                    name: 'Russian'
-                },
-                {
-                    value: 3792,
-                    name: 'German'
-                },
-                {
-                    value: 2212,
-                    name: 'Italian'
-                },
-                {
-                    value: 7401,
-                    name: 'French'
+                    value: 50.56,
+                    name: 'Neo4j'
                 }
             ],
             itemStyle: {
@@ -454,7 +405,7 @@
 
     option4 = {
         title: {
-            text: '导演执导电影数量对比'
+            text: '数据库排行对比'
         },
         tooltip: {
             show: true
@@ -470,810 +421,811 @@
                 minSize: 50
             },
             data: [{
-                name: "Robert N. Bradbury",
-                value: 12,
+                name: "Oracle",
+                value: 1346.39,
                 itemStyle: createRandomItemStyle()
             }, {
-                name: "Terence Young",
-                value: 9,
+                name: "MySQL",
+                value: 1275.67,
                 itemStyle: createRandomItemStyle()
             }, {
-                name: "John Farrow",
-                value: 9,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Tom Trbovich",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Jean-Jacques Beineix",
-                value: 3,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Kevin Dunn",
-                value: 18,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Michael Winner",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Chemical Burn Entertainment",
-                value: 14,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "John Landis",
-                value: 18,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "GÃ¶tz Friedrich",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Brian Large",
-                value: 12,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Diego Arsuaga",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Dave Palmer (III)",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Mike Shiell",
-                value: 16,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Robert Scull",
-                value: 7,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Donald Kim",
-                value: 10,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Bill Giggie",
-                value: 22,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "David L. Corley",
-                value: 6,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Henry Levin",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Arthur Dong",
-                value: 4,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Gela Babluani",
-                value: 12,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Sakabe Koji",
-                value: 8,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Fernando Trueba",
-                value: 30,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Mike Figgis",
-                value: 32,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Georg Tressler",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "James Bridges",
-                value: 7,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Alf Kjellin",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Saket Chaudhary",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Arthur Allan Seidelman",
-                value: 19,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Ron Mann",
-                value: 3,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Mario Azzopardi",
-
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Holly Dale",
-                value: 12,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Peter Deluise",
-                value: 10,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "James Head",
-                value: 13,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Andy Mikita",
-                value: 3,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "David Warry-Smith",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Brad Turner",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "David Winning",
-                value: 32,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Martin Wood",
-                value: 7,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Jake Scott",
-                value: 8,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Jon Brewer",
-                value: 4,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Lucky",
-                value: 12,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Piers Wenger",
-                value: 18,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "John Lavin",
-                value: 32,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Emilio Estevez",
-                value: 10,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Eikichi Kojika",
-                value: 4,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Osamu Sekita",
-                value: 23,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "RyÃ ́ji Fujiwara",
-                value: 6,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Shin'ya Sadamitsu",
-                value: 10,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Susumu GyÃ ́da",
-                value: 3,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Takuya SatÃ ́",
-                value: 16,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Tomokazu Tokoro",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Takeshi Mori",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Tomomichi Mochizuki",
-                value: 25,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Kazuhiro Furuhashi",
-                value: 23,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Tsutomu Shibayama",
-                value: 61,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Shigeyasu Yamauchi",
-                value: 26,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "James Foley",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Nicolas Roeg",
-                value: 9,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Robert Altman",
-                value: 12,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Scott Reynolds",
-                value: 22,
-
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Gabriel Sabloff",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Ron Howard",
-                value: 108,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "James Glickenhaus",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "John Patrick Shanley",
-                value: 4,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Mark Dindal",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Kevin Lima",
-                value: 51,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Dominic Anciano",
-                value: 16,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Ray Burdis",
-                value: 45,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Ben Sharpsteen",
-                value: 48,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Bill Roberts",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Jack Kinney",
-                value: 90,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "John Elliotte",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Norman Ferguson",
-                value: 3,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "George Scribner",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Wolfgang Reitherman",
-                value: 7,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "David Schmoeller",
-                value: 10,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "McG",
-                value: 38,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Neal Sundstrom",
-                value: 34,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Rich Wilkes",
-                value: 2,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Josef von Sternberg",
-                value: 14,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Aria Entertainment",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "John Ford",
-                value: 18,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Daniel Zirilli",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "John Glen",
-                value: 5,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Jonathan Stokes",
-                value: 27,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Grant MacDonald",
-                value: 13,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Dario Argento",
-                value: 5,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Arthur Marks",
-                value: 25,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Suzanne Deason",
-                value: 1,
-                itemStyle: createRandomItemStyle()
-            }, {
-                name: "Ted Landon",
-                value: 30,
-                itemStyle: createRandomItemStyle()
-            },
-
-                {
-                    name: "Michael Curtiz",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Mike Leigh",
-                    value: 31,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Kenny Ortega",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Miles Hanon",
-                    value: 23,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Henry Hathaway",
-                    value: 22,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Greg Carter",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Sean S. Cunningham",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Alfonso CuarÃ3n",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Scholastic",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Billy Wilder",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "WILLIAM NIGH",
-                    value: 7,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Ken Klein",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Wonsuk Chin",
-                    value: 16,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "MVD",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Bruce Seth Green",
-                    value: 14,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Ivan Reitman",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Vic Armstrong",
-                    value: 5,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jay Kanzler",
-                    value: 5,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Norman Foster",
-                    value: 17,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Roy Huggins",
-                    value: 18,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Audu Paden",
-                    value: 21,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Edoardo Margheriti",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Micky Dolenz",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Peter Tork",
-                    value: 8,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jon C. Andersen",
-                    value: 8,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Mike Elliot (III)",
-                    value: 38,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "James Frawley",
-                    value: 16,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Bryan Singer",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Orson Welles",
-                    value: 10,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "David Hugh Jones",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Fred Gerber",
-
-                    value: 21,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Robert Benton",
-                    value: 7,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Barry Levinson",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Steven Spielberg",
-                    value: 83,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Albert Hughes",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Allen Hughes",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "John McTiernan",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "mgm",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Mark Steven Johnson",
-                    value: 11,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Adam Dubin",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "CreateSpace",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Peter Maris",
-                    value: 18,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Victor Fleming",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Cassandra Peterson",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Eric Gardner",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Richard Linklater",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Andrew Bergman",
-                    value: 10,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Ben Edwards",
-                    value: 23,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Nick Thompson",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Juris Podnieks",
-                    value: 10,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Dylan Kidd",
-                    value: 5,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jason Connery",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Brian Grant",
-                    value: 16,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "David Rubin",
-                    value: 10,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Brad Rader",
-                    value: 11,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Chuck Patton",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Eric Radomski",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Frank Paur",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jennifer Yuh Nelson",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Sam Weisman",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Richard J. Baskin",
-                    value: 17,
-
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Don Dohler",
-                    value: 13,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Martin Rosen",
-                    value: 6,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "John Korty",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Oliver Hirschbiegel",
-                    value: 6,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Amir Bar-Lev",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Nick Quested",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Harold Ramis",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Tim Blake Nelson",
-                    value: 8,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Unavailable",
-                    value: 17,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Marty Callner",
-                    value: 20,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "LucÃa Puenzo",
-                    value: 19,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Martin Spottl",
-                    value: 21,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jessy Terrero",
-                    value: 17,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Clint Eastwood",
-                    value: 11,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Guy Maddin",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Ron Ford",
-                    value: 28,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Michael Haigney",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Kunihiko Yuyama",
-                    value: 38,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Mel Stuart",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Scott Perry",
-                    value: 7,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "William Lustig",
-                    value: 12,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Timothy Hill",
-                    value: 17,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "David Lowell Rich",
-                    value: 86,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "MJM Productions",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Willard Huyck",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Matthew O'Callaghan",
-                    value: 31,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Bob Rafelson",
-                    value: 7,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Robert C. Cooper",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "John Elias Michalakis",
-                    value: 7,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jean Rollin",
-                    value: 12,
-                    itemStyle: createRandomItemStyle()
-                },
-
-                {
-                    name: "Michael Heumann",
-                    value: 4,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "FrÃ©dÃ©ric Fonteyne",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Patrick Lussier",
-                    value: 10,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Joel Hodgson",
-                    value: 13,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Arch Hall Sr.",
-                    value: 16,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Nigel Cole",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Lars von Trier",
-                    value: 8,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "James Moll",
-                    value: 20,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Josef Rusnak",
-                    value: 9,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Lee Jeong-beom",
-                    value: 3,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Allan Dwan",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Jason Priestly",
-                    value: 22,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Mixtape",
-                    value: 1,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Patrick Coyle",
-                    value: 56,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Yossi Wein",
-                    value: 9,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Don Taylor",
-                    value: 18,
-                    itemStyle: createRandomItemStyle()
-                }, {
-                    name: "Nicholas Hynter",
-                    value: 2,
-                    itemStyle: createRandomItemStyle()
-                }
+                name: "Microsoft SQL Server",
+                value: 1096.20,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "PostgreSQL",
+                value: 503.37,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "MongoDB",
+                value: 421.12,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "IBM Db2",
+                value: 171.35,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "Elasticsearch",
+                value: 150.25,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "Redis",
+                value: 146.23,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "Cassandra",
+                value: 120.71,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "Hive",
+                value: 86.05,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "HBase",
+                value: 53.46,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "Neo4j",
+                value: 50.56,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "InfluxDB",
+                value: 20.33,
+                itemStyle: createRandomItemStyle()
+            }, {
+                name: "Netezza",
+                value: 19.59,
+                itemStyle: createRandomItemStyle()
+            }
+            // , {
+            //     name: "Robert Scull",
+            //     value: 7,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Donald Kim",
+            //     value: 10,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Bill Giggie",
+            //     value: 22,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "David L. Corley",
+            //     value: 6,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Henry Levin",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Arthur Dong",
+            //     value: 4,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Gela Babluani",
+            //     value: 12,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Sakabe Koji",
+            //     value: 8,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Fernando Trueba",
+            //     value: 30,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Mike Figgis",
+            //     value: 32,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Georg Tressler",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "James Bridges",
+            //     value: 7,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Alf Kjellin",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Saket Chaudhary",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Arthur Allan Seidelman",
+            //     value: 19,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Ron Mann",
+            //     value: 3,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Mario Azzopardi",
+            //
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Holly Dale",
+            //     value: 12,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Peter Deluise",
+            //     value: 10,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "James Head",
+            //     value: 13,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Andy Mikita",
+            //     value: 3,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "David Warry-Smith",
+            //     value: 2,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Brad Turner",
+            //     value: 2,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "David Winning",
+            //     value: 32,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Martin Wood",
+            //     value: 7,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Jake Scott",
+            //     value: 8,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Jon Brewer",
+            //     value: 4,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Lucky",
+            //     value: 12,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Piers Wenger",
+            //     value: 18,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "John Lavin",
+            //     value: 32,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Emilio Estevez",
+            //     value: 10,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Eikichi Kojika",
+            //     value: 4,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Osamu Sekita",
+            //     value: 23,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "RyÃ ́ji Fujiwara",
+            //     value: 6,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Shin'ya Sadamitsu",
+            //     value: 10,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Susumu GyÃ ́da",
+            //     value: 3,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Takuya SatÃ ́",
+            //     value: 16,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Tomokazu Tokoro",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Takeshi Mori",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Tomomichi Mochizuki",
+            //     value: 25,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Kazuhiro Furuhashi",
+            //     value: 23,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Tsutomu Shibayama",
+            //     value: 61,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Shigeyasu Yamauchi",
+            //     value: 26,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "James Foley",
+            //     value: 2,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Nicolas Roeg",
+            //     value: 9,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Robert Altman",
+            //     value: 12,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Scott Reynolds",
+            //     value: 22,
+            //
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Gabriel Sabloff",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Ron Howard",
+            //     value: 108,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "James Glickenhaus",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "John Patrick Shanley",
+            //     value: 4,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Mark Dindal",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Kevin Lima",
+            //     value: 51,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Dominic Anciano",
+            //     value: 16,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Ray Burdis",
+            //     value: 45,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Ben Sharpsteen",
+            //     value: 48,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Bill Roberts",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Jack Kinney",
+            //     value: 90,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "John Elliotte",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Norman Ferguson",
+            //     value: 3,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "George Scribner",
+            //     value: 2,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Wolfgang Reitherman",
+            //     value: 7,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "David Schmoeller",
+            //     value: 10,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "McG",
+            //     value: 38,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Neal Sundstrom",
+            //     value: 34,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Rich Wilkes",
+            //     value: 2,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Josef von Sternberg",
+            //     value: 14,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Aria Entertainment",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "John Ford",
+            //     value: 18,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Daniel Zirilli",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "John Glen",
+            //     value: 5,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Jonathan Stokes",
+            //     value: 27,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Grant MacDonald",
+            //     value: 13,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Dario Argento",
+            //     value: 5,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Arthur Marks",
+            //     value: 25,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Suzanne Deason",
+            //     value: 1,
+            //     itemStyle: createRandomItemStyle()
+            // }, {
+            //     name: "Ted Landon",
+            //     value: 30,
+            //     itemStyle: createRandomItemStyle()
+            // },
+            //
+            //     {
+            //         name: "Michael Curtiz",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Mike Leigh",
+            //         value: 31,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Kenny Ortega",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Miles Hanon",
+            //         value: 23,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Henry Hathaway",
+            //         value: 22,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Greg Carter",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Sean S. Cunningham",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Alfonso CuarÃ3n",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Scholastic",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Billy Wilder",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "WILLIAM NIGH",
+            //         value: 7,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Ken Klein",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Wonsuk Chin",
+            //         value: 16,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "MVD",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Bruce Seth Green",
+            //         value: 14,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Ivan Reitman",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Vic Armstrong",
+            //         value: 5,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jay Kanzler",
+            //         value: 5,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Norman Foster",
+            //         value: 17,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Roy Huggins",
+            //         value: 18,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Audu Paden",
+            //         value: 21,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Edoardo Margheriti",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Micky Dolenz",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Peter Tork",
+            //         value: 8,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jon C. Andersen",
+            //         value: 8,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Mike Elliot (III)",
+            //         value: 38,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "James Frawley",
+            //         value: 16,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Bryan Singer",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Orson Welles",
+            //         value: 10,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "David Hugh Jones",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Fred Gerber",
+            //
+            //         value: 21,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Robert Benton",
+            //         value: 7,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Barry Levinson",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Steven Spielberg",
+            //         value: 83,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Albert Hughes",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Allen Hughes",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "John McTiernan",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "mgm",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Mark Steven Johnson",
+            //         value: 11,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Adam Dubin",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "CreateSpace",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Peter Maris",
+            //         value: 18,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Victor Fleming",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Cassandra Peterson",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Eric Gardner",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Richard Linklater",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Andrew Bergman",
+            //         value: 10,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Ben Edwards",
+            //         value: 23,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Nick Thompson",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Juris Podnieks",
+            //         value: 10,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Dylan Kidd",
+            //         value: 5,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jason Connery",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Brian Grant",
+            //         value: 16,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "David Rubin",
+            //         value: 10,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Brad Rader",
+            //         value: 11,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Chuck Patton",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Eric Radomski",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Frank Paur",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jennifer Yuh Nelson",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Sam Weisman",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Richard J. Baskin",
+            //         value: 17,
+            //
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Don Dohler",
+            //         value: 13,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Martin Rosen",
+            //         value: 6,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "John Korty",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Oliver Hirschbiegel",
+            //         value: 6,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Amir Bar-Lev",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Nick Quested",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Harold Ramis",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Tim Blake Nelson",
+            //         value: 8,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Unavailable",
+            //         value: 17,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Marty Callner",
+            //         value: 20,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "LucÃa Puenzo",
+            //         value: 19,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Martin Spottl",
+            //         value: 21,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jessy Terrero",
+            //         value: 17,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Clint Eastwood",
+            //         value: 11,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Guy Maddin",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Ron Ford",
+            //         value: 28,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Michael Haigney",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Kunihiko Yuyama",
+            //         value: 38,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Mel Stuart",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Scott Perry",
+            //         value: 7,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "William Lustig",
+            //         value: 12,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Timothy Hill",
+            //         value: 17,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "David Lowell Rich",
+            //         value: 86,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "MJM Productions",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Willard Huyck",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Matthew O'Callaghan",
+            //         value: 31,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Bob Rafelson",
+            //         value: 7,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Robert C. Cooper",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "John Elias Michalakis",
+            //         value: 7,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jean Rollin",
+            //         value: 12,
+            //         itemStyle: createRandomItemStyle()
+            //     },
+            //
+            //     {
+            //         name: "Michael Heumann",
+            //         value: 4,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "FrÃ©dÃ©ric Fonteyne",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Patrick Lussier",
+            //         value: 10,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Joel Hodgson",
+            //         value: 13,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Arch Hall Sr.",
+            //         value: 16,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Nigel Cole",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Lars von Trier",
+            //         value: 8,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "James Moll",
+            //         value: 20,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Josef Rusnak",
+            //         value: 9,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Lee Jeong-beom",
+            //         value: 3,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Allan Dwan",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Jason Priestly",
+            //         value: 22,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Mixtape",
+            //         value: 1,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Patrick Coyle",
+            //         value: 56,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Yossi Wein",
+            //         value: 9,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Don Taylor",
+            //         value: 18,
+            //         itemStyle: createRandomItemStyle()
+            //     }, {
+            //         name: "Nicholas Hynter",
+            //         value: 2,
+            //         itemStyle: createRandomItemStyle()
+            //     }
             ]
         }]
     };
@@ -1312,8 +1264,8 @@
 
 </html>
 
-    <!--navbar-->
-    <!--maincontent-->
+<!--navbar-->
+<!--maincontent-->
 <!--    <div class="mainWrap navslide profilepage">-->
 <!--        <div class="ui equal width left aligned padded grid stackable">-->
 <!--            <div class="row">-->
